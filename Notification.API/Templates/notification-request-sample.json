@@ -1,0 +1,38 @@
+﻿{
+  "TransactionId": "123456789",
+  "BranchId": 362,
+  "BranchName": "QuickApp Orders",
+  "PhoneNo": "(09) 815 6800",
+  "Address1": "547-557 Don Buck Road Massey",
+  "Address2": "Auckland",
+  "OrderNo": "123456-01",
+  "CustomerId": "John Doe",
+  "CustomerEmail": "mail4solly@gmail.com",
+  "CustomerMobile": "0225383745",
+  "NotificationType": "Order Confirmation",
+  "FulfilmentType": {
+    "Delivery": true
+  },
+  "NotificationMethod": "Email",
+  "RequestDate": "20/10/2018",
+  "OrderLocation": "Location in NZ",
+  "DSP": "Anytime",
+  "ETA": "eta",
+  "Time": "10:05",
+  "Products": [
+    {
+      "ProductId": "2800027",
+      "Description": "100 X 50 Product",
+      "OrderQuantity": 10.45,
+      "UOM": "LM",
+      "Price": 84.95
+    },
+    {
+      "ProductId": "3200029",
+      "Description": "Standard Gib",
+      "OrderQuantity": 12.50,
+      "UOM": "Sh",
+      "Price": 85.50
+    }
+  ]
+}

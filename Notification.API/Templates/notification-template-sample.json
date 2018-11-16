@@ -1,0 +1,18 @@
+﻿[
+  {
+    "smsDomain": "sms.placemakers.co.nz",
+    "senderName": "Quick Orders",
+    "emailAddress": "thamesorders@placemakers.co.nz",
+    "notificationType": "Order Confirmation",
+    "notificationMethod": "SMS",
+    "templateId": "d-208035670e134f348aeccd898e789c48"
+  },
+  {
+    "smsDomain": null,
+    "senderName": "Quick Orders",
+    "emailAddress": "quick.orders@gmail.com",
+    "notificationType": "Order Confirmation",
+    "notificationMethod": "Email",
+    "templateId": "d-10b19bcec1444735a8755f464d4c7c7e"
+  }
+]
