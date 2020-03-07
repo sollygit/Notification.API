@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using Notification.Api;
+using Notification.Services;
 using Notification.API.Interfaces;
 using Notification.API.Settings;
 using Notification.Models.JsonConverters;
