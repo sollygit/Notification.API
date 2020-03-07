@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Notification.API.Controllers
 {
-    [Route("api/cona/100/[controller]")]
+    [Route("api/[controller]")]
     public class NotificationController : Controller
     {
         private readonly INotificationService _service;
@@ -18,8 +18,8 @@ namespace Notification.API.Controllers
             _service = service;
         }
 
-        [HttpGet("NotificationTemplate")]
-        public async Task<IActionResult> NotificationTemplate([FromQuery, BindRequired] int branchId, [FromQuery] string type, [FromQuery] Method method)
+        [HttpGet("Template")]
+        public async Task<IActionResult> Template([FromQuery, BindRequired] int branchId, [FromQuery] string type, [FromQuery] Method method)
         {
             try
             {

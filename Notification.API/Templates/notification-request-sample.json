@@ -1,11 +1,11 @@
 ﻿{
-  "TransactionId": "123456789",
+  "TransactionId": "1583574813",
   "BranchId": 362,
-  "BranchName": "QuickApp Orders",
+  "BranchName": "PlaceMakers Thames",
   "PhoneNo": "(09) 815 6800",
   "Address1": "547-557 Don Buck Road Massey",
   "Address2": "Auckland",
-  "OrderNo": "123456-01",
+  "OrderNo": "123456",
   "CustomerId": "John Doe",
   "CustomerEmail": "mail4solly@gmail.com",
   "CustomerMobile": "0225383745",
@@ -14,10 +14,13 @@
     "Delivery": true
   },
   "NotificationMethod": "Email",
-  "RequestDate": "20/10/2018",
+  "RequestDate": "20/04/2018",
   "OrderLocation": "Location in NZ",
-  "DSP": "Anytime",
-  "ETA": "eta",
+  "DSP": {
+    "Text": "Specific Time",
+    "SpecificTime": true
+  },
+  "ETA": "29/05/2018",
   "Time": "10:05",
   "Products": [
     {
@@ -32,7 +35,7 @@
       "Description": "Standard Gib",
       "OrderQuantity": 12.50,
       "UOM": "Sh",
-      "Price": 85.50
+      "Price": 85.00
     }
   ]
 }
