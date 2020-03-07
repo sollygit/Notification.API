@@ -21,7 +21,7 @@ namespace Notification.Models
         public Method NotificationMethod { get; set; }
         public string RequestDate { get; set; }
         public string OrderLocation { get; set; }
-        public string DSP { get; set; }
+        public JObject DSP { get; set; }
         public string ETA { get; set; }
         public string Time { get; set; }
         public List<Product> Products { get; set; }

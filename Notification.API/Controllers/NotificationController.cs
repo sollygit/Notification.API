@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Configuration;
 using Notification.API.Interfaces;
-using Notification.API.Repository;
 using Notification.Models;
 using System;
 using System.Linq;
@@ -13,13 +11,11 @@ namespace Notification.API.Controllers
     [Route("api/cona/100/[controller]")]
     public class NotificationController : Controller
     {
-        readonly IConfiguration _configuration;
-        readonly INotificationRepository repository;
+        private readonly INotificationService _service;
 
-        public NotificationController(IConfiguration configuration)
+        public NotificationController(INotificationService service)
         {
-            _configuration = configuration;
-            repository = new NotificationRepository(_configuration);
+            _service = service;
         }
 
         [HttpGet("NotificationTemplate")]
@@ -27,7 +23,7 @@ namespace Notification.API.Controllers
         {
             try
             {
-                var templatesTask = await repository.GetNotificationTemplatesAsync(branchId, type, method);
+                var templatesTask = await _service.GetTemplates(branchId, type, method);
                 var templates = templatesTask.NotificationTemplates;
 
                 return Ok(templates);
@@ -45,8 +41,6 @@ namespace Notification.API.Controllers
             if (request == null)
             {
                 return BadRequest(new NotificationResponse {
-                    TransactionId = request.TransactionId,
-                    OrderNo = request.OrderNo,
                     ServiceResult = new ServiceResult { Code = 2, Message = "Request could not be parsed" }
                 });
             }
@@ -56,7 +50,7 @@ namespace Notification.API.Controllers
             try
             {
                 // Get a notification template by a given type and method
-                var templatesTask = await repository.GetNotificationTemplatesAsync(request.BranchId, request.NotificationType, request.NotificationMethod);
+                var templatesTask = await _service.GetTemplates(request.BranchId, request.NotificationType, request.NotificationMethod);
 
                 // Exit if Notification Template not found
                 if (templatesTask.NotificationTemplates.Count == 0)
@@ -77,7 +71,7 @@ namespace Notification.API.Controllers
                 var template = templatesTask.NotificationTemplates.Where(o => o.NotificationMethod == request.NotificationMethod).FirstOrDefault();
 
                 // Send a Notification
-                var responseTask = await repository.SendNotificationAsync(request, template);
+                var responseTask = await _service.Send(request, template);
 
                 response.ServiceResult = responseTask.ServiceResult;
 
