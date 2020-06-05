@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Notification.API.Interfaces;
 using Notification.Services;
 using System;
@@ -36,13 +37,15 @@ namespace Notification.API
                 .AddMvc(new Action<MvcOptions>(option => option.EnableEndpointRouting = false))
                 .AddJsonOptions(options => {
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                    options.JsonSerializerOptions.IgnoreNullValues = true;
-                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
 
             services
                 .AddMvcCore()
-                .AddApiExplorer();
+                .AddApiExplorer()
+                .AddNewtonsoftJson(o => {
+                    o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
 
             services.AddSwaggerGen(c =>
             {
