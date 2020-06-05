@@ -5,12 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
 using Notification.API.Interfaces;
 using Notification.Services;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Notification.API
 {
@@ -32,15 +33,16 @@ namespace Notification.API
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddMvc(new Action<MvcOptions>(option => option.EnableEndpointRouting = false));
+                .AddMvc(new Action<MvcOptions>(option => option.EnableEndpointRouting = false))
+                .AddJsonOptions(options => {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                });
 
             services
                 .AddMvcCore()
-                .AddApiExplorer()
-                .AddNewtonsoftJson(o => {
-                    o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                });
+                .AddApiExplorer();
 
             services.AddSwaggerGen(c =>
             {
@@ -50,8 +52,7 @@ namespace Notification.API
             services.AddHttpClient<INotificationService, NotificationService>(client => {
                 client.Timeout = TimeSpan.FromSeconds(20);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            })
-                .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+            }).SetHandlerLifetime(TimeSpan.FromMinutes(5));
 
             services.AddSingleton(_ => Configuration);
         }

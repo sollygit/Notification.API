@@ -16,6 +16,7 @@ namespace Notification.Services
     {
         private readonly IConfiguration _configuration;
         private readonly string _templateUri;
+        private readonly string _countryCode;
         private readonly string _sendGridApiKey;
         private readonly HttpClient _httpClient;
 
@@ -23,6 +24,7 @@ namespace Notification.Services
         {
             _configuration = configuration;
             _templateUri = _configuration["TemplateApi:Url"];
+            _countryCode = _configuration["TemplateApi:CountryCode"];
             _sendGridApiKey = _configuration["SendGrid:ApiKey"];
             _httpClient = httpClient;
         }
@@ -62,7 +64,7 @@ namespace Notification.Services
             var templateId = template.TemplateId;
             var toName = request.CustomerId;
             var toAddress = template.NotificationMethod == Method.SMS ?
-                GetFullSMS("61", request.CustomerMobile, template.SMSDomain) :
+                GetFullSMS(_countryCode, request.CustomerMobile, template.SMSDomain) :
                 request.CustomerEmail;
 
             var mailResponse = await SendGridEmail(fromAddress, fromName, toAddress, toName, templateId, request);
@@ -102,9 +104,9 @@ namespace Notification.Services
             return new MailResponse(response.StatusCode == HttpStatusCode.Accepted, result);
         }
 
-        private string GetFullSMS(string countryPrefix, string mobile, string domain)
+        private string GetFullSMS(string countryCode, string mobile, string domain)
         {
-            return $"+{countryPrefix}{mobile.TrimStart('0')}@{domain}";
+            return $"+{countryCode}{mobile.TrimStart('0')}@{domain}";
         }
     }
 }
