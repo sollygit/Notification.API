@@ -87,9 +87,9 @@ namespace Notification.Services
             {
                 From = new EmailAddress(fromAddress, fromName),
                 TemplateId = templateId,
-                Personalizations = new List<SendGrid.Helpers.Mail.Personalization>
+                Personalizations = new List<Personalization>
                 {
-                    new Models.Personalization {
+                    new Personalization {
                         Tos = new List<EmailAddress> { new EmailAddress(toAddress, toName) },
                         TemplateData = notificationRequest
                     }

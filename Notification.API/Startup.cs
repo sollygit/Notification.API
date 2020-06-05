@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Notification.API.Interfaces;
 using Notification.Services;
-using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
@@ -32,16 +31,20 @@ namespace Notification.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddMvc(new Action<MvcOptions>(option => option.EnableEndpointRouting = false));
+
+            services
+                .AddMvcCore()
+                .AddApiExplorer()
+                .AddNewtonsoftJson(o => {
+                    o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Notification API", Version = "v1" });
-            });
-
-            services.AddMvc().AddJsonOptions(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Notification API", Version = "v1" });
             });
 
             services.AddHttpClient<INotificationService, NotificationService>(client => {
@@ -54,9 +57,8 @@ namespace Notification.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            loggerFactory.AddConsole();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
