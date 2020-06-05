@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Notification.API.Interfaces;
-using Notification.API.Settings;
 using Notification.Services;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
@@ -38,11 +37,6 @@ namespace Notification.API
                 c.SwaggerDoc("v1", new Info { Title = "Notification API", Version = "v1" });
             });
 
-            services.AddSingleton(new TimeZoneSettings
-            {
-                Id = Configuration.GetValue<string>("TimeZoneId")
-            });
-            
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

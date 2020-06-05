@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Notification.Models\Notification.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
 </Project>
