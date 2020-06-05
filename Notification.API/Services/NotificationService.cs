@@ -62,7 +62,7 @@ namespace Notification.Services
             var templateId = template.TemplateId;
             var toName = request.CustomerId;
             var toAddress = template.NotificationMethod == Method.SMS ?
-                GetFullSMS("64", request.CustomerMobile, template.SMSDomain) :
+                GetFullSMS("61", request.CustomerMobile, template.SMSDomain) :
                 request.CustomerEmail;
 
             var mailResponse = await SendGridEmail(fromAddress, fromName, toAddress, toName, templateId, request);
