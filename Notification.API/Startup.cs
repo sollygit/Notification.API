@@ -6,10 +6,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using Notification.Services;
 using Notification.API.Interfaces;
 using Notification.API.Settings;
-using Notification.Models.JsonConverters;
+using Notification.Services;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
@@ -49,7 +48,6 @@ namespace Notification.API
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());
-                options.SerializerSettings.Converters.Add(new DateTimeOffsetConverter(Configuration.GetValue<string>("TimeZoneId")));
             });
 
             services.AddHttpClient<INotificationService, NotificationService>(client => {
