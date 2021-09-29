@@ -11,7 +11,6 @@ using Notification.Services;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Notification.API
@@ -72,6 +71,7 @@ namespace Notification.API
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification API");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseMvc();
