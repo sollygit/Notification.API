@@ -1,4 +1,4 @@
 # Notification Api
 
-- Notification Templates: https://run.mocky.io/v3/9e3a9b07-e138-4e1b-87cd-5d527b3dba17
-- Notification Request: http://www.mocky.io/v2/5eda5a1b3300009dfc79eb8d
+- Notification Templates: https://run.mocky.io/v3/2aaa6d32-4ad7-43cd-a0c2-fcf9de050f0d
+- Notification Request: https://run.mocky.io/v3/8815ce72-d0e8-4906-a871-c78171f58371
