@@ -31,7 +31,8 @@ namespace Notification.Services
 
         public async Task<TemplateResponse> GetTemplates(int branchId, string type, Method method)
         {
-            var uri = $"{_templateUri}/{branchId}";
+            // var uri = $"{_templateUri}/{branchId}";
+            var uri = _templateUri;
 
             if (!string.IsNullOrEmpty(type))
             {
