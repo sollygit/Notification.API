@@ -1,0 +1,40 @@
+{
+  "transactionId": "1583574813",
+  "branchId": 473,
+  "branchName": "Quick App",
+  "phoneNo": "(09) 815 6800",
+  "address1": "547-557 Don Buck Road Massey",
+  "address2": "Auckland",
+  "orderNo": "123456-01",
+  "customerId": "John Doe",
+  "customerEmail": "post2email@gmail.com",
+  "customerMobile": "0225383745",
+  "notificationType": "Order Confirmation",
+  "notificationMethod": "Email",
+  "requestDate": "20/10/2021",
+  "eta": "21/05/2020",
+  "time": "10:05",
+  "orderLocation": "Location in NZ",
+  "fulfilmentType": {
+    "delivery": true
+  },
+  "dsp": {
+    "text": "Anytime"
+  },
+  "products": [
+    {
+      "productId": "2800027",
+      "description": "100 X 50 Product",
+      "orderQuantity": "10.45",
+      "uom": "LM",
+      "price": 84.05
+    },
+    {
+      "productId": "3200029",
+      "description": "Standard Gib B52",
+      "orderQuantity": "12.50",
+      "uom": "Sh",
+      "price": 75.99
+    }
+  ]
+}
