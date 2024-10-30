@@ -1,0 +1,36 @@
+{
+  "Templates": [
+    {
+      "SMSDomain": "placemakers.co.nz",
+      "SenderName": "Placemakers",
+      "EmailAddress": "mtwellington@placemakers.co.nz ",
+      "NotificationType": "Order is Ready Notification",
+      "NotificationMethod": "Email",
+      "TemplateId": "436a7073-8436-4c2f-b3a5-d04091b8e6c2"
+    },
+    {
+      "SMSDomain": "placemakers.co.nz",
+      "SenderName": "Placemakers",
+      "EmailAddress": "mtwellington@placemakers.co.nz ",
+      "NotificationType": "Order is Ready Notification",
+      "NotificationMethod": "SMS",
+      "TemplateId": "ba42cafb-bb1e-418e-b40b-7d72652be46c"
+    },
+    {
+      "SMSDomain": "placemakers.co.nz",
+      "SenderName": "Placemakers",
+      "EmailAddress": "mtwellington@placemakers.co.nz ",
+      "NotificationType": "Label is Ready Notification",
+      "NotificationMethod": "Email",
+      "TemplateId": "e23f9a11-6ef7-4be7-a439-54dbd70d9eb1"
+    },
+    {
+      "SMSDomain": "placemakers.co.nz",
+      "SenderName": "Placemakers",
+      "EmailAddress": "mtwellington@placemakers.co.nz ",
+      "NotificationType": "Label is Ready Notification",
+      "NotificationMethod": "SMS",
+      "TemplateId": "6bf51013-0902-49a4-8376-d3084c16d2ed"
+    }
+  ]
+}
