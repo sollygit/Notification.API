@@ -20,7 +20,7 @@
       "smsDomain": "placemakers.co.nz",
       "senderName": "Placemakers",
       "emailAddress": "mtwellington@placemakers.co.nz ",
-      "notificationType": "Label is Ready Notification",
+      "notificationType": "Courier Label is Ready",
       "notificationMethod": "Email",
       "templateId": "e23f9a11-6ef7-4be7-a439-54dbd70d9eb1"
     },
@@ -28,7 +28,7 @@
       "smsDomain": "placemakers.co.nz",
       "senderName": "Placemakers",
       "emailAddress": "mtwellington@placemakers.co.nz ",
-      "notificationType": "Label is Ready Notification",
+      "notificationType": "Courier Label is Ready",
       "notificationMethod": "SMS",
       "templateId": "6bf51013-0902-49a4-8376-d3084c16d2ed"
     }
