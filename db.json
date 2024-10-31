@@ -4,7 +4,7 @@
       "smsDomain": "placemakers.co.nz",
       "senderName": "Placemakers",
       "emailAddress": "mtwellington@placemakers.co.nz ",
-      "notificationType": "Order Confirmation Notification",
+      "notificationType": "Order Confirmation",
       "notificationMethod": "Email",
       "templateId": "436a7073-8436-4c2f-b3a5-d04091b8e6c2"
     },
@@ -12,7 +12,7 @@
       "smsDomain": "placemakers.co.nz",
       "senderName": "Placemakers",
       "emailAddress": "mtwellington@placemakers.co.nz ",
-      "notificationType": "Order Confirmation Notification",
+      "notificationType": "Order Confirmation",
       "notificationMethod": "SMS",
       "templateId": "ba42cafb-bb1e-418e-b40b-7d72652be46c"
     },
