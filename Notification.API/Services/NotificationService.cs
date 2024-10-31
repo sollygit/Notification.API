@@ -34,15 +34,15 @@ namespace Notification.Services
             // var uri = $"{_templateUri}/{branchId}";
             var uri = _templateUri;
 
-            if (!string.IsNullOrEmpty(type))
-            {
-                uri += $"/{type}";
-            }
+            //if (!string.IsNullOrEmpty(type))
+            //{
+            //    uri += $"/{type}";
+            //}
 
-            if (method != 0)
-            {
-                uri += $"/{method}";
-            }
+            //if (method != 0)
+            //{
+            //    uri += $"/{method}";
+            //}
 
             var response = await _httpClient.GetAsync(uri);
             var result = response.Content != null ? 
